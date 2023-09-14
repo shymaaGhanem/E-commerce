@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+
+  $bgColor:#0aad0a;
+  $lightBgColor:#f0f3f2;
+  $shadow: rgba(145,158,171,.2) 0px 2px 4px -1px,rgba(145,158,171,.14) 0px 4px 5px 0px,rgba(145,158,171,.12) 0px 1px 10px 0px;
+  $fontFamily:'Encode Sans Expanded', sans-serif;
+  $ratingColor:#ffc908;
+
+
+body{
+font-family: $fontFamily;
+}
+.rating-color
+{
+  color:$ratingColor;
+}
+
+.cursor-pointer
+{
+    cursor: pointer;
+}
+.product:hover{
+box-shadow: $shadow !important;
+border:1px solid $bgColor !important;
+}
+.product .btn{
+  opacity: 0 !important;
+  transition:transform 1s ,opacity 1s !important;
+  transform: translateY(100%) !important;
+}
+.product:hover .btn{
+  opacity: 1 !important;
+  transform: translateY(0%) !important;
+}
+a , a:hover{
+  color: black;
+  text-decoration: none;
+}
+
+.text-main
+{
+    color:$bgColor;
+}
+.font-sm
+{
+    font-size: 14px;
+}
+.bg-main
+{
+    background-color:$bgColor !important;
+}
+.bg-main-light 
+{
+    background-color: $lightBgColor !important;
+}

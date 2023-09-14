@@ -1,0 +1,68 @@
+<app-mainslider></app-mainslider>
+
+<div class="my-5">
+    <h2>shop popular <span class="text-main">categories</span></h2>
+    <div class="row">
+        <!-- <div *ngFor="let data of catData;let last = last" class="col-md-3">
+            <div class="bg-light rounded border p-2 text-center">
+               <img [src]="data.image" class="w-100 imgStyle"/>
+               <h6>{{data.name}}</h6>
+            </div>
+            <div routerLink="/categories" *ngIf="last" class="d-flex justify-content-end my-3">
+              <i class="fa-solid text-success fa-2x fa-circle-arrow-right"></i>
+            </div>
+        </div> -->
+     
+        <owl-carousel-o [options]="customOptions">
+      
+          <ng-container *ngFor="let slide of catData">
+            <ng-template carouselSlide [id]="slide.id">
+              <img height="200" width="200" [src]="slide.image"class="w-100">
+              <p>{{slide.name}}</p>
+            </ng-template>
+          </ng-container>
+      
+        </owl-carousel-o>
+        
+        
+        
+        
+    </div>
+</div>
+
+<div class="my-5">
+    <h2>shop popular <span class="text-main">Brands</span></h2>
+    <div class="row">
+        <div *ngFor="let data of brands;let last=last" class="col-md-3">
+            <div class="bg-light rounded border p-2 text-center">
+               <img [src]="data.image" class="w-100 imgStyle"/>
+               <h6>{{data.name}}</h6>
+            </div>
+            <div routerLink="/brands" *ngIf="last" class="d-flex justify-content-end my-3">
+                <i class="fa-solid text-success fa-2x fa-circle-arrow-right"></i>
+              </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="my-5">
+    <h2>shop popular <span class="text-main">Products</span></h2>
+    <div class="row gy-4">
+        <div *ngFor="let data of products" class="col-md-3">
+        <a [routerLink]="['/productDetails',data._id]">
+            <div class="text-center product p-2">
+                <img [src]="data.imageCover" class="w-100 imgStyle"/>
+                <h4 class="fw-bold">{{data.title.split(' ').slice(0,2).join(' ')}}</h4>
+                <p class="text-main">{{data.category.name}}</p>
+                <div class="d-flex justify-content-between text-muted py-2">
+                <span>{{data.price}}EGP</span>
+                <span><i class="fa-solid fa-star rating-color"></i>{{data.ratingsAverage}}</span>
+                </div>
+                <button class="btn bg-main text-light w-75">Add +</button>
+             </div>
+        </a>
+           
+        </div>
+    </div>
+</div>
