@@ -38,7 +38,8 @@
             <div class="alert alert-danger"
             *ngIf="registerForm.get('rePassword')?.errors&&registerForm.get('rePassword')?.touched">
             <p *ngIf="registerForm.get('rePassword')?.getError('required')">this required input</p>
-            <p *ngIf="registerForm.get('rePassword')?.getError('pattern')">enter avalid rePassword</p>
+            <!-- <p *ngIf="registerForm.get('rePassword')?.getError('pattern')">enter avalid rePassword</p> -->
+            <p *ngIf="registerForm.get('rePassword')?.getError('repasswordMatch')">repassword not match password</p>
         </div>
         </div>
         <div class="mb-3">

@@ -21,6 +21,8 @@ import { ProductDeetailsComponent } from './product-deetails/product-deetails.co
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MainsliderComponent } from './mainslider/mainslider.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { MainsliderComponent } from './mainslider/mainslider.component';
     SignupComponent,
     SigninComponent,
     ProductDeetailsComponent,
-    MainsliderComponent
+    MainsliderComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

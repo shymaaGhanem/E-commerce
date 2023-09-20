@@ -19,12 +19,24 @@ email:new FormControl(null,[Validators.required,Validators.email]),
 password:new FormControl(null,[Validators.required,Validators.pattern('^[A-Z][a-z0-9]{4,}$')]),
 rePassword:new FormControl(null,[Validators.required,Validators.pattern('^[A-Z][a-z0-9]{4,}$')]),
 phone:new FormControl(null,[Validators.required,Validators.pattern('^(01)[0125][0-9]{8}')])
-})
+},{validators:this.RepasswordMatch})
 
+RepasswordMatch(form:any){
+// form.controls['name']
+// form.controls['email']
+let password=form.get('password')
+let rePassword=form.get('rePassword')
+if(password.value === rePassword.value){
+return null
+}else{
+rePassword.setErrors({repasswordMatch:'repassword not matched'})
+return {repasswordMatch:'repassword not matched'}
+}
+}
 
 signUp(formData:FormGroup){
 this.isLoading=true;
-console.log(formData.value)
+console.log(formData)
 this._AuthService.Register(formData.value).subscribe({
 next:(response)=>{console.log(response)
 this.isLoading=false;
