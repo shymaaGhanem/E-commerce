@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../service/data.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from '../service/cart.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,8 +12,9 @@ export class HomeComponent implements OnInit {
 catData:any[]=[];
 products:any[]=[];
 brands:any[]=[];
+searchValue:string=''
 
-constructor(private _DataService:DataService){
+constructor(private _DataService:DataService,private _cartService:CartService){
 }
 
 ngOnInit(): void {
@@ -20,6 +23,22 @@ this.getBrands()
 this.getProducts()
 }
 
+addTocart(productId:string){
+this._cartService.addToCart(productId).subscribe({
+next:(response)=>{console.log(response)
+if(response.status == 'success'){
+this._cartService.numberOfCartItem.next(response.numOfCartItems)
+  Swal.fire({
+    icon: 'success',
+    title: '',
+    text: response.message,
+  })
+}
+
+},
+error:(err)=>{console.log(err)}
+})
+}
 
 
 getCategories(){

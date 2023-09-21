@@ -1,0 +1,9 @@
+<form [formGroup]="payment" class="w-75 mx-auto my-5" (ngSubmit)="onlinePayment(payment)">
+    <label>Details</label>
+    <input type="text" class="form-control" formControlName="details" />
+    <label>phone</label>
+    <input type="tel" class="form-control" formControlName="phone" />
+    <label>city</label>
+    <input type="text" class="form-control" formControlName="city" />
+    <button type="submit" class="btn btn-success my-3">pay</button>
+</form>

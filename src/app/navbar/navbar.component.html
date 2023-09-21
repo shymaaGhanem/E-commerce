@@ -25,9 +25,6 @@
                 <a class="nav-link" routerLinkActive="text-success" routerLink = "wishlist">Wishlist</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="text-success" routerLink = "cart">Cart</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" routerLinkActive="text-success" routerLink = "profile">profile</a>
             </li>
   
@@ -44,6 +41,12 @@
                 <i class="fab fa-instagram  mx-2"></i>
                 <i class="fab fa-behance  mx-2"></i>
                 <i class="fab fa-youtube  mx-2"></i>
+            </li>
+            <li  *ngIf="isLogin" class="nav-item position-relative">
+                <a class="nav-link" routerLinkActive="text-success" routerLink = "cart">
+                <i class="fas fa-cart-shopping text-main fa-lg"></i>
+                <span class="position-absolute badge bg-main text-light top-0 end-0">{{cartNumber}}</span>
+                </a>
             </li>
             <li *ngIf="!isLogin"  class="nav-item">
                 <a  routerLink="signin" class="nav-link d-inline-block  px-2" >Login</a>

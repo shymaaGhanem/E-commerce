@@ -1,1 +1,30 @@
-<p>mycart works!</p>
+<div class="bg-main-light my-5 p-5">
+    <h2>shop Cart</h2>
+    <h6 class="text-main">TotalPrice:{{cartDetails?.totalCartPrice}}</h6>
+    <div class="my-3  " *ngFor="let product of cartDetails?.products">
+        <div *ngIf="product.count >0" class="row py-2 border-bottom">
+            <div class="col-md-1">
+                <img [src]="product.product.imageCover" [alt]="product.product.title" class="w-100" />
+            </div>
+            <div class="col-md-11 d-flex justify-content-between">
+                <div>
+                    <h6>{{product.product.title}}</h6>
+                    <h6>{{product.price}}EGP</h6>
+                    <button (click)="removeItem(product.product._id)" class="btn btn-outline-danger"><i class="fa-regular mx-2 fa-trash-can"></i>Remove</button>
+                </div>
+                <div class="d-flex align-items-center">
+                    <button (click)="updateItem(product.product._id,product.count+1)" class="btn btn-outline-success">+</button>
+                    <span class="mx-2">{{product.count}}</span>
+                    <button (click)="updateItem(product.product._id,product.count-1)" class="btn btn-outline-success">-</button>
+                </div>
+            </div>
+        </div>
+      
+
+    </div>
+    <button class="btn btn-success my-5">
+    <a routerLink="/checkout">
+        onlinepayment
+    </a>
+    </button>
+</div>

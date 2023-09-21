@@ -14,12 +14,14 @@
         <!-- <img [src]="productDetails.imageCover" class="w-100" /> -->
     </div>
     <div class="col-md-8">
+    <!-- <P>{{productDetails | json}}</P> -->
         <div>
-        <h2 class="fw-bold">{{productDetails.title}}</h2>
-        <p class="text-muted my-3">{{productDetails.description}}</p>
+        <h2 class="fw-bold">{{productDetails.title | addTitle}}</h2>
+        <p class="text-muted my-3">{{productDetails.description | lowercase}}</p>
         <p class="text-main">{{productDetails.category.name}}</p>
+        <P>{{productDetails.createdAt | date :'HH:MM'}}</P>
         <div class="d-flex justify-content-between text-muted pt-3 pb-5 ">
-            <span>{{productDetails.price}}EGP</span>
+            <span>{{productDetails.price | currency :'EUR'}}EGP</span>
             <span><i class="fa-solid fa-star rating-color"></i>{{productDetails.ratingsAverage}}</span>
             </div>
         <button class="btn bg-main text-light w-100">Add +</button>

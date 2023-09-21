@@ -15,14 +15,19 @@ import { MycartComponent } from './mycart/mycart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
-import{HttpClientModule} from'@angular/common/http'
-import { ReactiveFormsModule } from '@angular/forms';
+import{HTTP_INTERCEPTORS, HttpClientModule} from'@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDeetailsComponent } from './product-deetails/product-deetails.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MainsliderComponent } from './mainslider/mainslider.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { AllOrdersComponent } from './all-orders/all-orders.component';
+import { AddHeaderInterceptor } from './interceptor/add-header.interceptor';
+import { AddTitlePipe } from './add-title.pipe';
+import { SearchPipe } from './search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +46,11 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     ProductDeetailsComponent,
     MainsliderComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    CheckoutComponent,
+    AllOrdersComponent,
+    AddTitlePipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -49,9 +58,16 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+  {
+  provide:HTTP_INTERCEPTORS,
+  useClass:AddHeaderInterceptor,
+  multi:true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
