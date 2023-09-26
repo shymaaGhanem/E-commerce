@@ -18,12 +18,12 @@ export class AddHeaderInterceptor implements HttpInterceptor {
   // headers:request.headers.set('token',token)
   // })
   
- let modifiedReq= request.clone({
-  headers:request.headers.set('token',token)
-  })
-  console.log(modifiedReq)
+//  let modifiedReq= request.clone({
+//   headers:request.headers.set('token',token)
+//   })
+//   console.log(modifiedReq)
   
   
-    return next.handle(modifiedReq);
+    return next.handle(request);
   }
 }

@@ -24,21 +24,33 @@ numberOfCartItem=new BehaviorSubject(0);
   return this._HttpClient.post(`${this.baseUrl}/api/v1/cart`,
   {
     productId:Id
+  },
+  {
+  headers:this.headers
   })
   }
   
   getLoggedUserCart():Observable<any>{
-    return this._HttpClient.get(`${this.baseUrl}/api/v1/cart`)
+    return this._HttpClient.get(`${this.baseUrl}/api/v1/cart`,{
+      headers:this.headers
+    })
     }
     
   removeCartItem(Id:string):Observable<any>{
-    return this._HttpClient.delete(`${this.baseUrl}/api/v1/cart/${Id}`)
+    return this._HttpClient.delete(`${this.baseUrl}/api/v1/cart/${Id}`,
+    
+    {
+      headers:this.headers
+    })
     }
     
     updateCartItem(Id:string,count:number):Observable<any>{
       return this._HttpClient.put(`${this.baseUrl}/api/v1/cart/${Id}`,
       {
       count:count
+      },
+      {
+        headers:this.headers
       }
     
       )
@@ -49,6 +61,9 @@ numberOfCartItem=new BehaviorSubject(0);
       return this._HttpClient.post(`${this.baseUrl}/api/v1/orders/checkout-session/${ID}?url=http://localhost:4200`,
       {
         shippingAddress:shippingAddress
+      },
+      {
+        headers:this.headers
       }
       )
       }

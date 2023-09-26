@@ -47,8 +47,10 @@ this.catData=response.data;
 })
 }
 getProducts(){
+
 this._DataService.gatData('products').subscribe((response)=>{
 this.products=response.data;
+
 })
 }
 getBrands(){

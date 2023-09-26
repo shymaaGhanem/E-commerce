@@ -33,11 +33,13 @@ const routes: Routes = [
 {path:'cart',canActivate:[authGuard],component:MycartComponent},
 {path:'allorders',canActivate:[authGuard],component:AllOrdersComponent},
 {path:'checkout',canActivate:[authGuard],component:CheckoutComponent},
+{path:'changepassword',loadChildren:()=>import('./settings/settings.module').then((m)=>m.SettingsModule)},
 {path:'**',component:NotfoundComponent},
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

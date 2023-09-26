@@ -28,6 +28,8 @@ import { AllOrdersComponent } from './all-orders/all-orders.component';
 import { AddHeaderInterceptor } from './interceptor/add-header.interceptor';
 import { AddTitlePipe } from './add-title.pipe';
 import { SearchPipe } from './search.pipe';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderInterceptor } from './loader.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,8 @@ import { SearchPipe } from './search.pipe';
     CheckoutComponent,
     AllOrdersComponent,
     AddTitlePipe,
-    SearchPipe
+    SearchPipe,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,12 @@ import { SearchPipe } from './search.pipe';
   provide:HTTP_INTERCEPTORS,
   useClass:AddHeaderInterceptor,
   multi:true
-  }
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoaderInterceptor,
+    multi: true,
+ },
   ],
   bootstrap: [AppComponent]
 })
